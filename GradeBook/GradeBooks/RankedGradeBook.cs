@@ -15,7 +15,7 @@ namespace GradeBook.GradeBooks
 
         public List<Student> SortedStudents {
             get
-            { return Students.OrderBy(x => x.AverageGrade).ToList(); }
+            { return Students.OrderByDescending(x => x.AverageGrade).ToList(); }
         }
 
         public RankedGradeBook(string name) : base(name)
@@ -30,13 +30,13 @@ namespace GradeBook.GradeBooks
                 throw new InvalidOperationException("Ranked-grading requires a minimum of 5 students to work");
             }
 
-            if (averageGrade >= SortedStudents[NoToDropAGrade].AverageGrade)
+            if (averageGrade >= SortedStudents[NoToDropAGrade-1].AverageGrade)
             { return 'A'; }
-            else if (averageGrade >= SortedStudents[2 * NoToDropAGrade].AverageGrade)
+            else if (averageGrade >= SortedStudents[2 * NoToDropAGrade -1].AverageGrade)
             { return 'B'; }
-            else if (averageGrade >= SortedStudents[3 * NoToDropAGrade].AverageGrade)
+            else if (averageGrade >= SortedStudents[3 * NoToDropAGrade -1].AverageGrade)
             { return 'C'; }
-            else if (averageGrade >= SortedStudents[4 * NoToDropAGrade].AverageGrade)
+            else if (averageGrade >= SortedStudents[4 * NoToDropAGrade - 1].AverageGrade)
             { return 'D'; }
             else            
                 return 'F';
