@@ -18,7 +18,7 @@ namespace GradeBook.GradeBooks
             { return Students.OrderByDescending(x => x.AverageGrade).ToList(); }
         }
 
-        public RankedGradeBook(string name) : base(name)
+        public RankedGradeBook(string name, bool isWeighted) : base(name, isWeighted)
         {
             Type = Enums.GradeBookType.Ranked;
         }
